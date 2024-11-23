@@ -6,13 +6,15 @@ namespace Framework.Yggdrasil.Service
     {
         private static IServiceInjector Instance { get; set; }
 
-        public static void SetInjector(IServiceInjector injector)
+        public static T SetInjector<T>()where T:IServiceInjector,new()
         {
             Instance?.OnDestroy();
 
-            Instance = injector;
+            var instance = new T();
+            Instance = instance;
 
-            Instance?.OnStart();
+            Instance.OnStart();
+            return instance;
         }
 
         public static T GetService<T>() where T : IService
