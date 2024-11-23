@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Core.Service
+namespace Framework.Yggdrasil.Service
 {
     public class ServiceInjector : IServiceInjector
     {

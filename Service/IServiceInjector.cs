@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core.Service
+namespace Framework.Yggdrasil.Service
 {
     public interface IServiceInjector : IService
     {

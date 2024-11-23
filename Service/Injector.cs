@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace Core.Service
+namespace Framework.Yggdrasil.Service
 {
     public static class Injector
     {
-        private static IServiceInjector? Instance { get; set; }
+        private static IServiceInjector Instance { get; set; }
 
-        public static void SetInjector(IServiceInjector? injector)
+        public static void SetInjector(IServiceInjector injector)
         {
             Instance?.OnDestroy();
 
