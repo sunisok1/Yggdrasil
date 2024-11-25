@@ -1,3 +1,4 @@
 {
-	"name": "Framework.Yggdrasil"
+	"name": "Framework.Yggdrasil",
+	"references":[ "UniTask" ]
 }
