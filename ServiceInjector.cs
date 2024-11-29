@@ -9,12 +9,12 @@ namespace Framework.Yggdrasil
     {
         private readonly Dictionary<Type, IService> _services = new();
 
-        public void OnStart()
+        public void OnAdd()
         {
             _services.Add(typeof(IServiceInjector), this);
         }
 
-        public void OnDestroy()
+        public void OnRemove()
         {
         }
 
@@ -58,7 +58,7 @@ namespace Framework.Yggdrasil
                 serviceInstance = Activator.CreateInstance(implementType) as IService ?? throw new InvalidOperationException();
             }
 
-            serviceInstance.OnStart();
+            serviceInstance.OnAdd();
             if (_services.ContainsKey(serviceInterface))
             {
                 Deregister(serviceInterface);
@@ -77,7 +77,7 @@ namespace Framework.Yggdrasil
                 return;
             }
 
-            service.OnDestroy();
+            service.OnRemove();
             _services.Remove(serviceInterface);
         }
 

@@ -1,21 +1,25 @@
-﻿namespace Framework.Yggdrasil.Services
+﻿using System;
+using UnityEngine;
+
+namespace Framework.Yggdrasil.Services
 {
+    public class UIPathAttribute : Attribute
+    {
+        public readonly string path;
+
+        public UIPathAttribute(string path)
+        {
+            this.path = path;
+        }
+    }
+
     public interface IUIService : IService
     {
-        void Open<T, TArgs>(TArgs args) where T : BaseUI<TArgs> where TArgs : CreateArgs;
-        void Close<T>();
+        void Open<T>() where T : UIBase;
+        void Close<T>()where T : UIBase;
     }
 
-
-    public abstract class BaseUI<T> : BaseObject<T> where T : CreateArgs
+    public abstract class UIBase : MonoBehaviour
     {
-    }
-
-    public class FakeUI : BaseUI<FakeUI.FakeCreateArgs>
-    {
-        public class FakeCreateArgs : CreateArgs
-        {
-            public override string Path => "";
-        }
     }
 }

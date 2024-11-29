@@ -30,11 +30,11 @@ namespace Framework.Yggdrasil.Services
 
         public void RemoveHandler<T>(EventType<T> eventType) where T : EventArgs => throw new NotImplementedException();
 
-        public void OnStart()
+        public void OnAdd()
         {
         }
 
-        public void OnDestroy()
+        public void OnRemove()
         {
         }
     }

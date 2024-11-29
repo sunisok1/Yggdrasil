@@ -17,8 +17,8 @@ namespace Framework.Yggdrasil.Services
         T GetConfig<T>() where T : IConfig;
         void SetConfig<T>(T config) where T : IConfig;
         void DeleteConfig<T>() where T : IConfig;
-        void LoadConfig<T>(string path) where T : IConfig;
-        void SaveConfig<T>(string path) where T : IConfig;
+        T LoadConfig<T>(string path) where T : IConfig;
+        void SaveConfig<T>(T config,string path) where T : IConfig;
         void RefreshConfigs();
         IEnumerable<IConfig> ListAllConfigs();
         bool HasConfig<T>();

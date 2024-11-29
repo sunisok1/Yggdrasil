@@ -4,18 +4,8 @@ namespace Framework.Yggdrasil
 {
     public static class Injector
     {
+        public static bool Initialized { get; private set; }
         private static IServiceInjector Instance { get; set; }
-
-        public static T SetInjector<T>()where T:IServiceInjector,new()
-        {
-            Instance?.OnDestroy();
-
-            var instance = new T();
-            Instance = instance;
-
-            Instance.OnStart();
-            return instance;
-        }
 
         public static T GetService<T>() where T : IService
         {
@@ -25,6 +15,18 @@ namespace Framework.Yggdrasil
             }
 
             return Instance.GetService<T>();
+        }
+
+        public static T SetInjector<T>() where T : IServiceInjector, new()
+        {
+            Initialized = true;
+            Instance?.OnRemove();
+
+            var instance = new T();
+            Instance = instance;
+
+            Instance.OnAdd();
+            return instance;
         }
     }
 }
