@@ -6,12 +6,16 @@
         /// 服务启动调用函数  
         /// </summary>   
         /// <returns>无</returns> 
-        void OnAdd();
+        void OnAdd()
+        {
+        }
 
         /// <summary>  
         /// 服务销毁调用函数  
         /// </summary>   
         /// <returns>无</returns> 
-        void OnRemove();
+        void OnRemove()
+        {
+        }
     }
 }

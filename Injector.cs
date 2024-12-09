@@ -1,11 +1,12 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Framework.Yggdrasil
 {
     public static class Injector
     {
         public static bool Initialized { get; private set; }
-        private static IServiceInjector Instance { get; set; }
+        public static IServiceInjector Instance { get; private set; }
 
         public static T GetService<T>() where T : IService
         {
@@ -17,8 +18,14 @@ namespace Framework.Yggdrasil
             return Instance.GetService<T>();
         }
 
-        public static T SetInjector<T>() where T : IServiceInjector, new()
+        public static void SetInjector<T>() where T : IServiceInjector, new()
+        //Injector是第一个加载的Service，要求不依赖其他任何服务，可以直接new一个对象
         {
+#if UNITY_EDITOR
+            //通常情况下只会在项目启动时调用一次
+            if (Initialized)
+                Debug.LogWarning("Injector is already initialized");
+#endif
             Initialized = true;
             Instance?.OnRemove();
 
@@ -26,7 +33,6 @@ namespace Framework.Yggdrasil
             Instance = instance;
 
             Instance.OnAdd();
-            return instance;
         }
     }
 }

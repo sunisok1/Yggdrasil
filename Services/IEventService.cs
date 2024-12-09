@@ -29,13 +29,5 @@ namespace Framework.Yggdrasil.Services
         public void AddHandler<T>(EventType<T> eventType) where T : EventArgs => throw new NotImplementedException();
 
         public void RemoveHandler<T>(EventType<T> eventType) where T : EventArgs => throw new NotImplementedException();
-
-        public void OnAdd()
-        {
-        }
-
-        public void OnRemove()
-        {
-        }
     }
 }

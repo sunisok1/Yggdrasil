@@ -14,10 +14,6 @@ namespace Framework.Yggdrasil
             _services.Add(typeof(IServiceInjector), this);
         }
 
-        public void OnRemove()
-        {
-        }
-
         public void Register(Type serviceInterface, Type implementType)
         {
             var constructor = implementType.GetConstructors().FirstOrDefault(c => c.GetCustomAttribute<ServiceConstructorAttribute>() != null);
