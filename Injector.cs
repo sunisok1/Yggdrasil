@@ -8,16 +8,6 @@ namespace Framework.Yggdrasil
         public static bool Initialized { get; private set; }
         public static IServiceInjector Instance { get; private set; }
 
-        public static T GetService<T>() where T : IService
-        {
-            if (Instance == null)
-            {
-                throw new NullReferenceException("IServiceInjector is null");
-            }
-
-            return Instance.GetService<T>();
-        }
-
         public static void SetInjector<T>() where T : IServiceInjector, new()
         //Injector是第一个加载的Service，要求不依赖其他任何服务，可以直接new一个对象
         {
