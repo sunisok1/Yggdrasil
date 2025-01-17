@@ -22,7 +22,7 @@ namespace Framework.Yggdrasil.Services
         void RemoveHandler<T>(EventType<T> eventType) where T : EventArgs;
     }
 
-    public class FakeEventService : IEventService
+    internal class FakeEventService : IEventService
     {
         public void Raise<T>(object sender, T args) where T : EventArgs => throw new NotImplementedException();
 

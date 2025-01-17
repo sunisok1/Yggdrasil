@@ -22,4 +22,17 @@ namespace Framework.Yggdrasil.Services
     public abstract class UIBase : MonoBehaviour
     {
     }
+    
+    internal class FakeUIService: IUIService
+    {
+        public void Open<T>() where T : UIBase
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Close<T>() where T : UIBase
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

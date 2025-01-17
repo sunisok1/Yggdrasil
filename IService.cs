@@ -1,20 +1,16 @@
-﻿namespace Framework.Yggdrasil
+﻿using System;
+using Cysharp.Threading.Tasks;
+
+namespace Framework.Yggdrasil
 {
     public interface IService
     {
-        /// <summary>  
-        /// 服务启动调用函数  
-        /// </summary>   
-        /// <returns>无</returns> 
-        void OnAdd()
+        UniTask Initialize()
         {
+            return UniTask.CompletedTask;
         }
 
-        /// <summary>  
-        /// 服务销毁调用函数  
-        /// </summary>   
-        /// <returns>无</returns> 
-        void OnRemove()
+        void Dispose()
         {
         }
     }
